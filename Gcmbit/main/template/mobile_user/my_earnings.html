@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu4.html'));}-->
+<div class="mui-content">	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title lang" key=a3></h1>
+	</header>
+	
+	<div class="mui-content">
+
+	
+		<div class="gg-main p-lr">
+			
+			<div class="tzjl-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="fslist-hd mui-row">
+					<span class="mui-col-xs-5 lang" key=a3a1></span>
+					<span class="mui-col-xs-5 lang"  style="text-align:center" key=a3a2></span>
+					<span class="mui-col-xs-2 lang" key=a3a3></span>
+				</div>
+				<div class="fslist-bd">
+					<ul class="fslist-bd-ul mui-clearfix">
+					<!--{foreach($shouyilist as $k=>$v):}-->
+						<li>
+							<span class="mui-col-xs-5">{$v["shijian"]}</span>
+							<span class="mui-col-xs-5" style="text-align:center">
+							<!--{if($v['typeid'] == 1):}--><font class="lang" key=a9a1></font>
+							<!--{elseif($v['typeid'] == 2):}--><font class="lang" key=a9a2></font>
+							<!--{elseif($v['typeid'] == 3):}--><font class="lang" key=a9a3></font>
+							<!--{elseif($v['typeid'] == 4):}--><font class="lang" key=a9a4></font>
+							<!--{elseif($v['typeid'] == 5):}--><font class="lang" key=a9a5></font>
+							<!--{elseif($v['typeid'] == 6):}--><font class="lang" key=a9a6></font>
+							<!--{elseif($v['typeid'] == 7):}--><font class="lang" key=a9a7></font>
+							<!--{endif;}--></span>
+							<span class="mui-col-xs-2">{floatval($v["amount"])}</span>
+						</li>
+					<!--{endforeach;}-->
+					</ul>
+				</div>
+                <div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>				
+			</div><!--tzjl-box end-->
+			
+			
+	    </div>
+
+<!--{include(pe_tpl('footer.html'));}--> 
+	
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+	
+
+</div>
+</body>	
+
+
+</html>

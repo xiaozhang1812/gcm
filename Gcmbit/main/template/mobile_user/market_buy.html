@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu3.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<!--{if($info['leixing'] == 1):}-->
+		<h1 class="mui-title lang" key="btitleb">GCM</h1>
+		<!--{else:}-->
+		<h1 class="mui-title lang" key="btitlea">GCM</h1>
+		<!--{endif;}-->
+	</header>	
+<style>
+.nibox{text-align:center;padding:6px;margin:6px;font-size:16px;background-color:#fff;border-radius:8px;border 1px solid ##D5E9FF}
+.nibox span{font-size:14px;color:#6490C0}
+.bb{border:0px;background-color:#EBE9EB;padding:5px;color:#fff}
+.tr-top{font-size:20px;margin-top:30px;font-weight:normal;padding:10px;}
+</style>
+	<div class="mui-content">
+		
+				<div class="mm-main p-lr">
+			
+			<div class="tr-top">
+				<span class="lang" key="bbtc"></span>:&nbsp;&nbsp;{floatval($user["user_btc"])}
+			</div>
+
+           <form method="post" id="form">
+		   	<!--{if($info['leixing'] == 1 and $user['user_isjy'] == 0):}-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div style="font-size:14px">
+					<span class="lang" key="bjytext"></span>
+				</div>
+			</div>
+			<!--{endif;}-->
+			<!--{if($info['leixing'] == 1 and $user['user_isjy'] == 1):}-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div style="font-size:14px">
+					<span class="lang" key="bjytextb"></span>
+				</div>
+			</div>
+			<!--{else:}-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3 class="lang" key="brice"></h3>
+					<div style="font-size:14px">
+						<font style="font-size:22px">{$info['price']} sats</font><br>
+						<font style="color:#808080">${round($info["price"]*$rsadmin['btcprice']*0.00000001,8)}</font>
+					</div>
+				</div>
+			</div>
+
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3 class="lang" key="bamount"></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<input type="number" max="{$info['amount']}" min="1000" name="amount" id="amount" placeholder="Amount" value="" oninput=checkNum(this,100000,1) onkeyup="javascript:checkWords(this);" onmousedown="javascript:checkWords(this);" style="width:100%;font-size:16px;border-bottom:1px solid #000"  class="wi-input mui-pull-left"  />
+						<font color=#808080><span class="lang" key="bamountall"></span>：{floatval($info['amount'])} GCM</font>
+					</div>
+				</div>
+			</div><!--wi-box end-->
+
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<span class="lang" key="bpay"></span>：<span style="font-family: Georgia; font-size: 26px;" id="wordCheck">0.00000000</span> btc
+				</div>
+			</div><!--wi-box end-->
+    <div>
+    </div>
+			
+			<br><br>
+			<div class="tr-btnBox">
+				<input type="hidden" name="pe_token" value="{$pe_token}" />
+		        <input type="hidden" name="pesubmit" />
+				<input type="hidden" name="id" value="{$info['id']}" />
+				<!--{if($info['leixing'] == 1):}-->
+				<button id="btna" type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 btn-shadow lang" key="bbanb">立即购买精英节点</button>
+				<!--{else:}-->
+				<button id="btna" type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 btn-shadow lang" key="bbana">立即购买</button>
+				<!--{endif;}-->
+			</div>
+			<!--{endif;}-->
+			</form>
+
+		
+	</div><!--mui-content end-->
+	<!--{if($info['leixing'] == 0):}-->
+	<br><br><center><a href="user.php?mod=market&act=gm"><font class="lang" key="bmore"></font></a></center>	
+	<!--{else:}-->
+		<div class="gg-main p-lr">
+		<!--{foreach($infolist as $k=>$v):}-->
+			<div class="wdqz-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="wdqz-list">
+					<div class="wdqz-list-left">
+						<h3 class="lang" key="blista"></h3>
+						<p>{$v["shijian"]}</p>
+						<p><span class="lang" key="blistamount"></span>：{floatval($v["amount"])} GCM</p>
+					</div>
+					<div class="wdqz-list-right">
+						<p style="color:#000;text-align:right"><span class="lang" key="blistprice"></span>：<span style="font-family: Georgia; font-size: 16px;">{floatval($v["price"])}</font> sats</p>
+						<p></p>
+						<p style="text-align:right;color:green"><span class="lang" key="blistall"></span>：{floatval($v["btc"])} btc</p>
+
+					</div>
+				</div>
+					
+			</div>
+			<!--{endforeach;}-->
+
+			<div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>
+		</div>
+	<!--{endif;}-->
+    <script>
+        var maxstrlen = 50;
+        function Q(s) {
+            return document.getElementById(s);
+        }
+        function checkWords(c) {
+		
+            len = maxstrlen;
+            var str = c.value;
+            var wck = Q("wordCheck");
+			var ok = str*{$info['price']*0.00000001};
+			ok = ok.toFixed(8);
+            wck.innerHTML = ok;
+
+        }
+    </script>
+	
+<script>
+function checkNum(obj,intNum=0,decNum=0) {
+    var value=obj.value;
+    var changeValue,t1,t2;
+    switch (decNum){
+            case 0:
+                value=value.replace(/[^\d]/g,'');
+                value=value.replace(/^0\d+/g,'0');
+                if(intNum!=0){
+                    value=value.substr(0,intNum);
+                }
+                break;
+            default:
+                value=value.replace(/[^\d.]/g,'');
+                value=value.replace(/^[^\d]/g,'');
+                value=value.replace(/\.{2}/g,'.');
+                value=value.replace(/^0\d+/g,'0');
+                changeValue=value.split('.');
+                if(changeValue.length>1){
+                    if(intNum==0){
+                        t1=changeValue[0];
+                    }else{
+                        t1=changeValue[0].substr(0,intNum);
+                    }
+                    t2=changeValue[1].substr(0,decNum);
+                    value=t1+'.'+t2;
+                }else{
+                    if(intNum!=0){
+                        value=value.substr(0,intNum);
+                    }
+                }
+                break;
+        }
+    if(obj.value!=value){
+        obj.value=value;
+    }
+    return value;
+}
+</script>
+	
+<script type="text/javascript">
+$(function(){
+	$(":button").click(function(){
+		var amount = pe_num($(":input[name='amount']").val());
+		console.log(amount);
+		if (amount <= 0) {
+			app_tip('Please input amount','error');
+			return false;
+		}
+		app_submit("user.php?mod=market&act=buy", function(json){
+			if (json.result) {
+				app_open("user.php?mod=market", 1000);
+			}
+		})
+	})
+})
+</script>	
+<script src="/main/js/langmarket.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+

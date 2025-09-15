@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script> 	
+	<style>
+	 .Invbtn{padding:15px;background-color:#B3B3B3;}
+	</style>
+	<body>
+		<!--{include(pe_tpl('menu4.html'));}-->
+
+	<header class="mui-bar mui-bar-nav i-header-bar mui-bar-transparent">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title lang" key=a1></h1>
+		<a class="mui-icon mui-icon-right-nav mui-pull-right"></a>
+	</header>	
+
+
+
+
+
+
+
+
+
+        <div style="text-align:center;width:100%;padding:30px">
+		    <img src="images/icon/homlogo.png" style="width:70%">
+		    <!--{if($user['user_ishege'] == 1):}-->
+
+			<input type="text" id="input" value="{$user['user_tuijianma']}"  class="Invwz"  readonly style="font-size:35px;text-align:center;border:0px"/>
+			<br><br>
+            <button class="Invbtn lang" onclick="copyUrl()" key=a1b></button> 
+		    <!--{else:}-->
+			<center><p class="lang" key=a1c style="font-size:20px"></p></center>
+			<!--{endif;}-->
+		
+		</div>
+
+
+
+
+
+
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+<script type="text/javascript">
+ function copyUrl() {
+             var Url=document.getElementById("input");
+             Url.select(); 
+             document.execCommand("Copy"); 
+             alert("Success copied!",1500); 
+         }
+</script>
+
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+		
+<!--{include(pe_tpl('footer.html'));}--> 
+
+</body>
+	
+
+
+</html>

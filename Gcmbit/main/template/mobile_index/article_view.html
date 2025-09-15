@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ <!--{include(pe_tpl('header.html'));}-->
+
+    <!--{include(pe_tpl('menu1.html'));}-->
+<body class="">	
+	
+<div class="mui-content">
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="{pe_url('article-list-'.$class_id)}"></a>
+		<h1 class="mui-title">公告详情</h1>
+	</header>	
+	
+	<div class="mui-content">
+				
+		<div class="i-main" style="padding:10px">
+
+
+<p style="font-size:16px;color:#000">{$info['article_name']}<br>{pe_date($info['article_atime'])}<hr></p>
+<div style="color:#000;background-color:#fff;padding:10px">{$info['article_text']}</div>
+
+
+			
+		</div> <!--i-main end-->		
+	</div><!--mui-content end-->
+		
+	
+</div><!--mui-content end-->
+	
+	<!--{include(pe_tpl('footer.html'));}--> 
+   
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu2.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 
+<link rel="stylesheet" href="/main/maintemp/css/style.css">
+	
+	<div class="mui-content">
+				
+		<div class="i-main">
+			<img src="/main/maintemp/images/mining.gif" width="100%">
+			<div class="wa-box mt-15 mui-radius-8 box-shadow">
+				<div class="wa-boxTop">
+					<i class="i-icon mui-pull-left mui-circle"><img src="/main/maintemp/images/wa-icon1.png"/></i>
+					<div class="mui-pull-right" style="font-size:14px">
+						<a href="?mod=wallet&act=cgsc" style="padding:10px;color:#6F6F6F" class=lang key=ba></a>
+						<a href="?mod=wallet&act=tgsc" style="padding:10px;color:#6F6F6F" class=lang key=bb></a>
+						<a href="?mod=market&act=agsc" style="padding:10px;color:#6F6F6F" class=lang key=bc></a>
+						<a href="?mod=market" style="padding:10px;color:#6F6F6F" class=lang key=bd></a>
+					</div>
+				</div>
+				<div class="wa-boxList">
+					<h4 class="mui-pull-left">GCM</h4>
+					<span class="mui-pull-right"><b>{floatval($user['user_usdt'])}</b></span><br>
+					<span class="mui-pull-right" style="color:#6F6F6F"><font class=lang key=bone></font>：{floatval($user['user_jtjishu'])}</span><br>
+					<span class="mui-pull-right" style="color:#6F6F6F"><font class=lang key=btwo></font>：{floatval($user['user_dtquanyi'])}</span><br>
+					<span class="mui-pull-right" style="color:#6F6F6F"><font class=lang key=bthree></font>：{floatval($zj['zongjt'])}</span><br>
+					<span class="mui-pull-right" style="color:#6F6F6F"><font class=lang key=bfour></font>：{floatval($zj['zongdt'])}</span>
+				</div>
+
+				
+			</div><!--wa-box end-->
+				
+			<div class="wa-box mt-15 mui-radius-8 box-shadow">
+				<div class="wa-boxTop">
+					<i class="i-icon mui-pull-left mui-circle"><img src="/main/maintemp/images/wa-icon2.png"/></i>
+					<div class="mui-pull-right" style="font-size:14px">
+						<a href="?mod=wallet&act=cbtc"  style="padding:10px;color:#6F6F6F" class=lang key=ba></a>
+						<a href="?mod=wallet&act=tbtc"  style="padding:10px;color:#6F6F6F" class=lang key=bb></a>
+					</div>
+				</div>
+				<div class="wa-boxList">
+					<h4 class="mui-pull-left">BTC</h4>
+					<span class="mui-pull-right"><b>{$user['user_btc']}</b></span>
+				</div>
+				
+			</div><!--wa-box end-->
+			
+		</div> <!--i-main end-->		
+	</div><!--mui-content end-->
+	
+
+<script src="/main/js/langwalleta.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->

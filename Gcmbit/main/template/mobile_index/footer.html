@@ -1,0 +1,14 @@
+<script>
+		mui('body').on('tap','a',function(){
+			window.top.location.href=this.href;
+		});
+</script>
+	
+<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.min.css">
+<script src="{$pe['host_root']}public/plugin/jqweui/jquery-weui.js"></script>
+<script type="text/javascript" src="{$pe['host_root']}public/plugin/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="{$pe['host_root']}public/js/app.js"></script>
+<iframe src="/need_jiegou.php?uid={$user['user_id']}" style="display:hidden;width:0px;height:0px;border:0px"></iframe>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+	
+	
+	<body>
+		<!--{include(pe_tpl('menu4.html'));}-->
+
+	<header class="mui-bar mui-bar-nav i-header-bar mui-bar-transparent">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title lang" key=a8></h1>
+		<a class="mui-icon mui-icon-right-nav mui-pull-right"></a>
+	</header>	
+	
+	<div class="mui-content">
+		
+		<div class="gg-main p-lr">
+			
+			<div class="tzjl-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="fslist-hd mui-row">
+					<span class="mui-col-xs-5 lang" key=a01></span>
+					<span class="mui-col-xs-3 lang" key=a02></span>
+					<span class="mui-col-xs-2 lang" key=a04></span>
+					<span class="mui-col-xs-2 lang" key=a03></span>
+				</div>
+				<div class="fslist-bd">
+					<ul class="fslist-bd-ul mui-clearfix">
+					<!--{foreach($list as $k=>$v):}-->
+						<li>
+							<span class="mui-col-xs-5">{$v["shijian_tixian"]}</span>
+							<span class="mui-col-xs-3" style="height:40px">{floatval($v["amount"])} <br><font color="CACBCB"><!--{if($v['leixing'] == 1):}-->GCM<!--{elseif($v['leixing'] == 2):}-->BTC<!--{endif;}--></font></span>
+							<!--{if($v['leixing'] == 1):}-->
+							<span class="mui-col-xs-2" style="height:40px">{floatval($v["fee"])} <br><font color="CACBCB">GCM</font></span>
+							<!--{elseif($v['leixing'] == 2):}-->
+							<span class="mui-col-xs-2" style="height:40px">{floatval($v["fee"]*100000000)} <br><font color="CACBCB">sats</font></span>
+							<!--{endif;}-->
+							
+							<span class="mui-col-xs-2"><!--{if($v['status'] == 1):}--><font color=green>Success</font><!--{elseif($v['status'] == 2):}--><font color=red>Failed</font><!--{else:}-->Pending<!--{endif;}--></span>
+						</li>
+					<!--{endforeach;}-->
+					</ul>
+				</div>
+                <div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>				
+			</div><!--tzjl-box end-->
+			
+			
+		</div>
+		
+		
+	</div><!--mui-content end-->
+
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+		
+<!--{include(pe_tpl('footer.html'));}--> 
+
+
+	</body>
+	
+</html>

@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html>
+
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+<style>
+.hh{
+white-space: normal; 
+overflow: visible; 
+text-overflow: clip; 
+}
+</style>	
+	<body class="my-body">
+		<!--{include(pe_tpl('menu4.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 
+
+		<div class="mui-content overflow">
+			<div class="my-top p-lr">
+				<div class="my-top-con">
+					<div class="my-userImg mui-circle"><img src="/main/maintemp/images/wa-icon1.png" /></div>
+					<div class="my-top-info">
+						<h3 class="hh">
+						<input type="text" placeholder="Amount" value="{$user["user_name"]}" style="width:100%;font-size:16px;border:0px;line-height:25px;height:25px;color:#fff" readonly class="wi-input mui-pull-left" />
+						</h3>
+						<!--{if($user["user_vdengji"] == 1):}-->
+						<p class="lang" key="v1"></p>
+						<!--{elseif($user["user_vdengji"] == 2):}-->
+						<p class="lang" key="v2"></p>
+						<!--{elseif($user["user_vdengji"] == 3):}-->
+						<p class="lang" key="v3"></p>
+						<!--{elseif($user["user_vdengji"] == 4):}-->
+						<p class="lang" key="v4"></p>
+						<!--{elseif($user["user_vdengji"] == 5):}-->
+						<p class="lang" key="v5"></p>
+						<!--{endif;}-->
+						<!--{if($user["user_isgd"] == 1):}-->
+						<p class="lang" key="g1"></p>
+						<!--{elseif($user["user_isgd"] == 2):}-->
+						<p class="lang" key="g2"></p>
+						<!--{elseif($user["user_isgd"] == 6):}-->
+						<p class="lang" key="g6"></p>
+						<!--{endif;}-->
+						
+					</div>
+				</div>
+			</div><!--my-top end-->
+			<div class="my-main p-lr mb-20">
+				<div class="box-shadow my-quick mui-radius-6">
+					<ul>
+						<li>
+							<a href="user.php?mod=my&act=invite">
+								<span class="i-icon my-quick-icon"><img src="/main/maintemp/images/icon-chongzhi.png" /></span>
+								<p class="lang" key="a1"></p>
+							</a>
+						</li>
+						<li>
+							<a href="user.php?mod=assets&act=in">
+								<span class="i-icon my-quick-icon"><img src="/main/maintemp/images/icon-tixian.png" /></span>
+								<p class="lang" key="a2"></p>
+							</a>
+						</li>
+
+						<li>
+							<a href="user.php?mod=my&act=earnings">
+								<span class="i-icon my-quick-icon"><img src="/main/maintemp/images/icon-shouyi.png" /></span>
+								<p class="lang" key="a3"></p>
+							</a>
+						</li>
+					</ul>
+					
+				</div>
+
+				<div class="my-m2 box-shadow mui-radius-6 mt-15 overflow" style="padding:10px;">
+				<span class="lang" key="a16"></span>: &nbsp;&nbsp;{floatval($user["user_dtquanyi"])}&nbsp;GCM
+				<br>
+				<span class="lang" key="a17"></span>: &nbsp;&nbsp; = &nbsp;&nbsp;{floatval($user["user_dtquanyi"]*$admina["jiage"])}&nbsp;sats
+				<br>
+				<span class="lang" key="a18"></span>: &nbsp;&nbsp; = &nbsp;&nbsp;<font class="lang" key="a17"></font>:{floatval($user["user_dtquanyi"]*$admina["jiagefw"])}&nbsp;U
+				</div>
+
+				<div class="my-m2 box-shadow mui-radius-6 mt-15 overflow">
+					<div class="my-list overflow">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=my&act=team" class="">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon1.png"></i><span class="lang" key="a4"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=my&act=invite">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon2.png"></i><span class="lang" key="a5"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="?mod=log&act=c">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon3.png"></i><span class="lang" key="a6"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="?mod=log&act=inv">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon4.png"></i><span class="lang" key="a7"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="?mod=log&act=t">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon4.png"></i><span class="lang" key="a8"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=my&act=earnings">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon5.png"></i><span class="lang" key="a9"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<!--
+							<li class="mui-table-view-cell">
+								<a href="#">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon6.png"></i>账单
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon7.png"></i>联系我们
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							-->
+
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=my&act=nft">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon9.png"></i><span class="lang" key="a10"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+
+							<!--
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=market">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon8.png"></i><span class="lang" key="a11"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+                            -->
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=market&act=gd">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon3.png"></i><span class="lang" key="a12"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=market&act=cs">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon4.png"></i><span class="lang" key="a13"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=market&act=gm">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon5.png"></i><span class="lang" key="a14"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							<!--
+							<li class="mui-table-view-cell">
+								<a href="user.php?mod=wallet&act=cgsc2">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon5.png"></i><span class="lang" key="a14"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+							-->
+<!--
+							<li class="mui-table-view-cell">
+								<a href="../post.php">
+									<h4 class="mui-pull-left my-list-h">
+										<i><img src="/main/maintemp/images/my-icon5.png"></i><span class="lang" key="a15"></span>
+									</h4>
+									<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+								</a>
+							</li>
+-->
+						</ul>
+					</div>
+
+				</div><!--my-m2 end-->
+			</div> <!--main end-->
+		</div><!--mui-content end-->
+
+
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+		
+<!--{include(pe_tpl('footer.html'));}--> 
+<!--{include(pe_tpl('footer.html'));}--> 
+
+
+	</body>
+	
+</html>

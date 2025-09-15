@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+    <style>
+	.buy{padding:5px;background-color:#747474;color:#fff}
+	</style>
+	<body class="i-body">
+		<!--{include(pe_tpl('menu1.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 
+		<div class="mui-content">
+			<div class="i-main">
+				<div class="i-banner-wrap w100">
+					<div class="mui-slider i-banner overflow mui-radius-6">
+						<div class="mui-slider-group mui-slider-loop">
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#"><img src="/main/maintemp/images/i-banner.png" /></a>
+							</div>
+
+							<div class="mui-slider-item">
+								<a href="#"><img src="/main/maintemp/images/i-banner.png" /></a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="#"><img src="/main/maintemp/images/i-banner.png" /></a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="#"><img src="/main/maintemp/images/i-banner.png" /></a>
+							</div>
+
+
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#"><img src="/main/maintemp/images/i-banner.png" /></a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+				</div> <!-- i-banner-wrap end-->
+
+
+				<div class="i-m1 mt-15">
+					<div class="i-m1-tabHd mui-clearfix">
+						<ul>
+							<li class="active"><a class="lang" key="mainone"></a></li>
+							<li><a href="user.php?mod=market&act=market" class="lang" key="maintwo"></a></li>
+						</ul>
+					</div>
+				<div class="i-m1-tabBd"><br>
+						<div class="i-m1-tab-item tabShow">
+							<img src="/main/maintemp/images/ntf-img.gif" width="100%">
+						</div>
+
+					</div>
+				<div class="i-m2 mt-20" style="margin-top:0px;background-color:#fff">
+					<div class="i-m2-list">
+						<ul>
+							<li>
+								<div style="text-align:center"><span class="lang" key="ye">当前余额</span>：{$user["user_usdt"]} GCM&nbsp;&nbsp <a href="user.php?mod=wallet&act=cgsc"><span class="lang" key="cz">充值</span></a></div>
+							</li>
+						</ul>
+					</div>
+				</div>	
+					<form method="post" id="form">	
+					<div class="investment-box mt-20">
+						<input type="number" name="quantity" class="js-i-m1-input" value="" placeholder="{$miny}GCM~{$maxy}GCM" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" style="font-size:18px"/>
+						<span class="increase" style="height:40px">+</span>
+						<i></i>
+						<span class="decrease" style="height:40px">-</span>
+					    <input type="hidden" name="pe_token" value="{$pe_token}" />
+		                <input type="hidden" name="pesubmit" />
+		                <input type="hidden" name="yye"  value="{$user['user_usdt']}"/>
+						<button onclick="sub()" type="button"><font class="lang" key="subma"></font></button>
+					</div>
+					</form><br>
+					<a href="user.php?mod=log&act=inv"><center><span style="padding:20px;background-color:#fff;line-height:40px;color:#000" class="lang" key="log"></span></center></a>
+				</div><!--i-m1 end-->
+				
+				<div class="i-m2 mt-20" style="margin-top:60px;background-color:#fff">
+					<div class="i-m2-list">
+						<ul>
+							<li>
+								<div class="i-m2-list-right mui-pull-right">GCM.BITCOIN.PARTNER</div>
+								<div class="i-m2-list-left lang" key="fname"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right">884186:77</div>
+								<div class="i-m2-list-left lang" key="fcode"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right">{floatval($admi["jiagefw"])} USDT</div>
+								<div class="i-m2-list-left lang" key="fprice"></div>
+							</li>
+							<!--
+							<li>
+								<div class="i-m2-list-right mui-pull-right">{floatval($admi["jiage"])} sats / ${number_format($rsadmin['jiage']*$rsadmin['btcprice']*0.00000001,4)}</div>
+								<div class="i-m2-list-left lang" key="fprice"></div>
+							</li>
+							-->
+							<li>
+								<div class="i-m2-list-right mui-pull-right" align=right><input value="{$admi['heidong']}" style="width:100%;border:0px;height:100%;line-height:100%;margin-top:10px;font-size:12px"></div>
+								<div class="i-m2-list-left lang" key="heidong"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right">{floatval($admi["xiaohui"])}</div>
+								<div class="i-m2-list-left lang" key="xiaohui"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right">{floatval($admi["jfenpei"])}</div>
+								<div class="i-m2-list-left lang" key="today"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right"><a href="user.php?mod=my&act=nft"><span class="buy lang" key="buy"></span></a></div>
+								<div class="i-m2-list-left lang" key="buynft"></div>
+							</li>
+							<!--
+							<li>
+								<div class="i-m2-list-right mui-pull-right"><a href="user.php?mod=market&act=market"><span class="buy lang" key="buy"></span></a></div>
+								<div class="i-m2-list-left lang" key="buyjy"></div>
+							</li>
+							-->
+							<li>
+								<div class="i-m2-list-right mui-pull-right"><a href="about.html"><span class="buy lang" key="goout"></span></a></div>
+								<div class="i-m2-list-left lang" key="about"></div>
+							</li>
+							<li>
+								<div class="i-m2-list-right mui-pull-right"><a href="comm.html"><span class="buy lang" key="goout"></span></a></div>
+								<div class="i-m2-list-left lang" key="commt"></div>
+							</li>
+							<!--
+							<li>
+								<div class="i-m2-list-right mui-pull-right"><a href="user.php?mod=wallet&act=cgsc2"><span class="buy lang" key="goout"></span></a></div>
+								<div class="i-m2-list-left lang" key="commt"></div>
+							</li>
+						    -->
+						</ul>
+					</div>
+				</div>
+				<br><br><br>
+				
+			</div><!--i-main end-->
+		</div><!--mui-content end-->
+		
+
+
+		
+<script type="text/javascript">
+    function  sub(){
+	
+		var amount = pe_num($(":input[name='quantity']").val(), 'float', 8);
+		var yye = pe_num($(":input[name='yye']").val());
+		if (amount <= 0) {
+			app_tip('Please input amount','error');
+			return false;
+		}
+		if (amount > yye) {
+			app_tip('Insufficient balance, please recharge.','error');
+			app_open("user.php?mod=wallet&act=cgsc", 100);
+			return false;
+		}
+
+		app_submit("user.php?mod=assets&act=in", function(json){
+			if (json.result) {
+				app_open("user.php?mod=assets&act=in", 1000);
+			}
+		})
+    }
+</script>
+        <script src="/main/js/langmaina.js" type="text/javascript"  charset="gb2312"></script>	
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}--> 
+
+
+	</body>
+	
+</html>

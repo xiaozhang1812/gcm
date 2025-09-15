@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu4.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title lang" key=a4></h1>
+	</header>
+	
+	
+	
+	
+	
+	
+	<div class="mui-content">
+    <div style="padding:20px;font-size:14px">
+			<span class="lang" key=a4a1></span>: {$user["user_ishegeson"]}
+            <br>
+			<span class="lang" key=a4a2></span>: {$user["user_ishegeall"]}
+	</div>
+	<div class="mui-content">
+		
+		<div class="gg-main p-lr">
+		<!--{foreach($ulist as $k=>$v):}-->
+			<div class="wdqz-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="wdqz-list">
+					<div class="wdqz-list-left">
+						<h3>{pe_cut($v['user_name'], 10, '...')}</h3>
+						<p>{$v["user_shijian"]}</p>
+						<p><span class="lang" key=a4a3></span>：{floatval($v["user_tdyejime"])} USDT</p>
+						<p><span class="lang" key=a4a2></span>：{$v["user_ishegeall"]}</p>
+						<p><span class="lang" key=a4a7></span>：{$v["user_oldishegeson"]}</p>
+						<p><span class="lang" key=a4a8></span>：{$v["user_oldishegeall"]}</p>
+					</div>
+					<div class="wdqz-list-right">
+						<!--{if($v["user_vdengji"] == 1):}-->
+						<p class="lang" key="v1"></p>
+						<!--{elseif($v["user_vdengji"] == 2):}-->
+						<p class="lang" key="v2"></p>
+						<!--{elseif($v["user_vdengji"] == 3):}-->
+						<p class="lang" key="v3"></p>
+						<!--{elseif($v["user_vdengji"] == 4):}-->
+						<p class="lang" key="v4"></p>
+						<!--{elseif($v["user_vdengji"] == 5):}-->
+						<p class="lang" key="v5"></p>
+						<!--{endif;}-->
+					</div>
+				</div>
+					
+			</div>
+			<!--{endforeach;}-->
+
+			<div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>
+		</div>
+ </div>		
+ 
+</body>
+
+
+	
+
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+
+<!--{include(pe_tpl('footer.html'));}-->
+	
+
+
+</html>

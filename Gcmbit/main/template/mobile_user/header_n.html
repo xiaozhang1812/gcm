@@ -1,0 +1,47 @@
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<title>Global Chain Merchant</title>
+		<script src="/main/maintemp/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="/main/maintemp/js/flexible/flexible.debug.js"></script>
+		
+		
+
+		<link href="/main/maintemp/css/mui.min.css" rel="stylesheet" />
+		<link href="/main/maintemp/css/app.css" rel="stylesheet" />
+		<script type="text/javascript" src="{$pe['host_root']}public/js/global.js"></script>
+        <script src="{$pe['host_root']}public/plugin/jqweui/jquery-weui.js"></script>
+        <script type="text/javascript" src="{$pe['host_root']}public/js/jquery.scrollLoading.js"></script>
+        <script type="text/javascript">
+            $(function(){
+	            $("img.js_imgload").scrollLoading();
+            });
+        </script>
+
+	</head>
+	
+<script>
+
+    window.onload = function () {
+        showu();
+    }
+   
+   function showu(){
+   
+	var myaddress = okxwallet.bitcoin.getAccounts();
+    myaddress.then(res => {
+		defaultAccount = res[0];		
+		if(defaultAccount){
+     	    window.clearInterval(this.Inval);
+            if (defaultAccount!="{$_COOKIE["uaccount"]}"){
+		        url="/index.php";window.location.href=url;  
+		    }
+        }
+		});
+
+   }
+   setInterval("showu()","1000");
+</script>

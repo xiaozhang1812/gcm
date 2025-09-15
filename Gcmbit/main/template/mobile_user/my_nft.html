@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu4.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title">NFT</h1>
+	</header>	
+<style>
+.nibox{text-align:center;padding:6px;margin:6px;font-size:16px;background-color:#fff;border-radius:8px;border 1px solid ##D5E9FF}
+.nibox span{font-size:14px;color:#6490C0}
+.bb{border:0px;background-color:#EBE9EB;padding:5px;color:#fff}
+.tr-top{font-size:20px;margin-top:30px;font-weight:normal;padding:10px;}
+</style>
+	<div class="mui-content">
+		
+				<div class="mm-main p-lr" style="margin-top:50px">
+			     <center><img src="/main/maintemp/images/nft.png" width=200></center>
+			<!--{if($user['user_isnft'] == 1):}-->
+			<br><br>
+            <center class="lang" key=a10a3></center>
+			
+			<div class="tzjl-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="fslist-hd mui-row">
+					<span class="mui-col-xs-8 lang" key=a01></span>
+					<span class="mui-col-xs-2">GCM</span>
+				</div>
+				<div class="fslist-bd">
+					<ul class="fslist-bd-ul mui-clearfix">
+					<!--{foreach($nftlist as $k=>$v):}-->
+						<li>
+							<span class="mui-col-xs-8">{$v["sj"]}</span>
+							<span class="mui-col-xs-2">{$v["text"]} </span>
+						</li>
+					<!--{endforeach;}-->
+					</ul>
+				</div>
+                <div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>				
+			</div><!--tzjl-box end-->
+			
+			
+			<!--{else:}-->
+			<br><br>
+			<div style="padding:20px;font-size:16px;text-align:center" class="tzjl-box mui-radius-8 box-shadow mt-15"><span class="lang" key=a10a5></span>{$synft}</div>
+           <form method="post" id="form">
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<center><h3 style="lang" key=a10a1></h3></center>
+					<div class="wi-inputBox mui-clearfix" style="font-size:40px;text-align:center">
+						500 GCM
+					</div>
+				</div>
+			</div><!--wi-box end-->
+			
+			
+			<div class="tr-btnBox">
+				<input type="hidden" name="pe_token" value="{$pe_token}" />
+		        <input type="hidden" name="pesubmit" />
+				<input type="hidden" name="amount" value="400" />
+				<button id="btna" type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 btn-shadow lang" key=a10a2></button>
+			</div>
+			</form>
+			<!--{endif;}-->
+			
+			<div style="padding:20px;font-size:16px" class="tzjl-box mui-radius-8 box-shadow mt-15 lang" key=a10a4>
+			</div><!--tzjl-box end-->
+		</div><!--wi-main end-->		
+	</div><!--mui-content end-->
+<script type="text/javascript">
+$(function(){
+
+
+	$(":button").click(function(){
+	
+		var amount = pe_num($(":input[name='amount']").val(), 'float', 8);
+		
+		console.log(amount);
+
+		if (amount <= 0) {
+			app_tip('Please input amount','error');
+			return false;
+		}
+
+		app_submit("user.php?mod=my&act=nft", function(json){
+			if (json.result) {
+				app_open("user.php?mod=my&act=nft", 1000);
+			}
+		})
+	})
+})
+</script>	
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+

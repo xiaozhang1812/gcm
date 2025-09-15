@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu4.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title" ><font class="lang" key="a15a1"></font></h1>
+	</header>	
+<style>
+.nibox{text-align:center;padding:6px;margin:6px;font-size:16px;background-color:#fff;border-radius:8px;border 1px solid ##D5E9FF}
+.nibox span{font-size:14px;color:#6490C0}
+.bb{border:0px;background-color:#EBE9EB;padding:5px;color:#fff}
+.tr-top{font-size:20px;margin-top:30px;font-weight:normal;padding:10px;}
+</style>
+	<div class="mui-content">
+		
+				<div class="mm-main p-lr">
+			
+			
+           <form method="post" id="form">
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3><font class="lang" key="a15a2"></font></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<input type="text" name="nbnb" id="nbnb" placeholder="BNB wallet" value="{$user['user_bnb']}" style="width:100%;font-size:16px;border-bottom:1px solid #000"  class="wi-input mui-pull-left" />
+					</div>
+					<br>
+					<h3><font class="lang" key="a15a4"></font></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<textarea name="nbnbtext" id="nbnbtext" placeholder="Description" style="width:100%;font-size:16px;border-bottom:1px solid #000;height:200px;"  class="wi-input mui-pull-left" />{$user['user_bnbbeizhu']}</textarea>
+					</div>
+				</div>
+			</div><!--wi-box end-->
+			
+			<!--{if(!$user['user_bnb'] or !$user['user_bnbbeizhu']):}-->
+			<div class="tr-btnBox">
+				<input type="hidden" name="pe_token" value="{$pe_token}" />
+		         <input type="hidden" name="pesubmit" />
+				<button type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 btn-shadow lang" key="a15a3"></button>
+			</div>
+			<!--{endif;}-->
+			</form>
+			
+			
+		</div><!--wi-main end-->
+
+		<div class="gg-main p-lr">
+			<!--
+			<div class="tzjl-box mui-radius-8 box-shadow mt-15" style="padding:5px">
+				
+fgfg
+			</div><--!>				
+	</div><!--mui-content end-->	
+<script type="text/javascript">
+	$(":button").click(function(){
+		var nbnb = $(":input[name='nbnb']").val();
+        nbnb = nbnb.replace(/\s*/g,"");
+		var nbnbtext = $(":input[name='nbnbtext']").val();
+        nbnbtext = nbnbtext.replace(/\s*/g,"");
+		if (!nbnb) {
+			app_tip('X<BR>Error!');
+			return false;
+		}
+		if (!nbnbtext) {
+			app_tip('X<BR>Error!');
+			return false;
+		}
+		
+		app_submit("user.php?mod=my&act=bnb", function(json){
+			if (json.result) {
+				app_open("user.php?mod=my&act=bnb", 1000);
+			}
+		})
+	})
+</script>	
+<script src="/main/js/langmy.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu3.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 
+<link rel="stylesheet" href="/main/maintemp/css/style.css">
+
+<div class="mui-content">
+    <div class="mm-main p-lr mt-10">
+
+        <div class="i-m1 mt-15">
+            <div class="pending_title_list">
+                <a href="#" id="openPopover" class="userInformation">
+                    <img src="/main/maintemp/images/user-img.png" alt="">
+                    <span class="text">
+                        <strong>GCM.BITCOIN.PARTNER</strong>
+                        <em>Rune ID: 884186:77</em>
+                    </span>
+                </a>
+
+                <a class="shelves lang" href="user.php?mod=market&act=agsc" key="a1"></a>
+            </div>
+        </div>
+        <div class="pending_shop">
+            <div class="pending_shop_title">
+			<table style="width:100%;background-color:#E0E0E0">
+			<tr>
+			<!--{if($_g_type==1):}-->
+			  <td align="center"><a href="user.php?mod=market"><font color=#7E7E7E class="lang" key="a2"></font></a></td>
+			  <td style="text-align:center;height:40px;line-height:40px;background-color:#E4EEFE;font-size:16px"><a href="user.php?mod=market&type=1"><font color=#474747 class="lang" key="a3"></font></a></td>
+			<!--{else:}-->
+			  <td style="text-align:center;height:40px;line-height:40px;background-color:#E4EEFE;font-size:16px"><a href="user.php?mod=market"><font color=#474747 class="lang" key="a2"></font></a></td>
+			  <td align="center"><a href="user.php?mod=market&type=1"><font color=#7E7E7E class="lang" key="a3"></font></a></td>
+			<!--{endif;}-->
+			</tr>
+			</table>
+
+            </div>
+            <ul class="pending_list_shop">
+			<!--{foreach($info as $k=>$v):}-->
+                <li>
+                    <div class="list_top">
+
+                        <div class="price_title">
+                            <strong>#{$v['bianhao']}</strong>
+                            <span>{$v["shijian"]}</span>
+                        </div>
+						<!--{if($v['leixing']==1):}-->
+                        <a href="user.php?mod=market&act=buy&id={$v['id']}" class="lang" key="buyjy"></a>
+						<!--{else:}-->
+                        <a href="user.php?mod=market&act=buy&id={$v['id']}" class="lang" key="buy"></a>
+						<!--{endif;}-->
+                    </div>
+                    <div class="price">
+                        <div class="item">
+                            <span class="lang" key="price"></span>
+                            <strong>${round($v["price"]*$rsadmin['btcprice']*0.00000001,8)}</strong>
+                            <em>{$v["price"]} sats <img src="images/wa-icon2.png" alt=""></em>
+                        </div>
+                        <div class="item">
+                            <span class="lang" key="amount"></span>
+                            <strong>{floatval($v["amount"])}</strong>
+                            <em><font class="lang" key="sale"></font>{floatval($v["amounted"])}</em>
+                        </div>
+                    </div>
+                </li>
+			<!--{endforeach;}-->
+            </ul>
+            <div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>
+        </div>
+    </div><!--wi-main end-->
+</div><!--mui-content end-->
+
+<script>
+    var defaultOption = $('.custom-select .option[data-value="low_to_high"]');
+    $('.custom-select .selected-option').text(defaultOption.text());
+
+    $('.custom-select .selected-option').click(function() {
+        $(this).siblings('.options-container').toggle();
+    });
+
+    $('.custom-select .option').click(function() {
+        var selectedText = $(this).text();
+        $(this).closest('.custom-select').find('.selected-option').text(selectedText);
+        $(this).closest('.custom-select').find('.options-container').hide();
+
+        $(this).closest('.custom-select').data('selected-value', $(this).data('value'));
+        $(this).parent().addClass('selected');
+    });
+
+    $('.custom-select .option').click(function(e) {
+        e.stopPropagation();
+    });
+</script>
+<script src="/main/js/langmarket.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+

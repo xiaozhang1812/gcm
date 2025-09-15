@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu3.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title">Global Chain Merchant</h1>
+	</header>	
+<style>
+.nibox{text-align:center;padding:6px;margin:6px;font-size:16px;background-color:#fff;border-radius:8px;border 1px solid ##D5E9FF}
+.nibox span{font-size:14px;color:#6490C0}
+.bb{border:0px;background-color:#EBE9EB;padding:5px;color:#fff}
+.tr-top{font-size:20px;margin-top:30px;font-weight:normal;padding:10px;}
+</style>
+	<div class="mui-content">
+		
+				<div class="mm-main p-lr">
+			
+			<div class="tr-top">
+				GCM<span class="lang" key="ga"></span>:&nbsp;&nbsp;{floatval($user["user_usdt"])}
+			</div>
+			<br>
+
+
+
+           <form method="post" id="form">
+		   	<!--{if($user['user_isg'] == 1):}-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<div class="wi-inputBox mui-clearfix">
+						<input type="checkbox" name="leixing" id="leixing" value="1" style="width:30px;height:30px"  class="wi-input mui-pull-left" />
+						<span style="font-size:17px" class="lang" key="gleixing"></span>
+					</div>
+				</div>
+			</div>
+			<!--{endif;}-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3 class="lang" key="gamount"></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<input type="number" max="{$user['user_usdt']}" min="1" oninput=checkNum(this,100000,1) name="amount" id="amount" placeholder="Amount" value="" style="width:100%;font-size:16px;border-bottom:1px solid #000"  class="wi-input mui-pull-left" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" />
+					</div>
+				</div>
+			</div><!--wi-box end-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3 class="lang" key="gprice"></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<input type="text" name="price" id="price" onkeyup="javascript:checkWords(this);" onmousedown="javascript:checkWords(this);" placeholder="Price (sats)" value="{$rsadmin['jiage']}" style="width:100%;font-size:16px;border-bottom:1px solid #000;width:24%"  class="wi-input mui-pull-left" />
+						<input type="text" readonly value="sats" style="width:100%;font-size:16px;border-bottom:1px solid #000;width:75%"  class="wi-input mui-pull-left" />
+					</div>
+				</div>
+			</div><!--wi-box end-->
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<span class="lang" key="gpricermb"></span>：$<span style="font-family: Georgia; font-size: 26px;" id="wordCheck">{number_format($rsadmin['jiage']*$rsadmin['btcprice']*0.00000001,8)}</span>
+				</div>
+			</div><!--wi-box end-->
+    <div>
+    </div>
+			
+			<br><br>
+			<div class="tr-btnBox">
+				<input type="hidden" name="pe_token" value="{$pe_token}" />
+		        <input type="hidden" name="pesubmit" />
+				<button id="btna" type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 btn-shadow lang" key="gnow"></button>
+			</div>
+			</form>
+			
+		<br><br><center><a href="?mod=market&act=cs"><font class="lang" key="gall"></font></a></center><br><br>
+		
+		<div class="gg-main p-lr">
+		<!--{foreach($info as $k=>$v):}-->
+			<div class="wdqz-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="wdqz-list">
+					<div class="wdqz-list-left">
+						<h3>#{$v['bianhao']}</h3>
+						<p>{$v["shijian"]}</p>
+						<p><span class="lang" key="gmyfee"></span>：{floatval($v["fee"])}</p>
+						<p><span class="lang" key="gmya"></span>：{floatval($v["amount"])}</p>
+						<p><span class="lang" key="gmyb"></span>：{floatval($v["amounted"])}</p>
+					</div>
+					<div class="wdqz-list-right">
+						<p style="color:#000"><span class="lang" key="gmyprice"></span>：<span style="font-family: Georgia; font-size: 16px;">{floatval($v["price"])}</font> sats</p>
+						<p></p>
+						<!--{if($v["amount"] > 0):}-->
+						    <!--{if($infotianshu[$k] >= 0):}-->
+						        <a href="user.php?mod=market&act=regm&id={$v['id']}&token={$pe_token}" onclick="return confirm('Are you sure?')"><p style="text-align:right" class="lang" key="gmyfanhui"></p></a>
+						    <!--{endif;}-->
+						<!--{else:}-->
+						<a href="user.php?mod=market&act=delgm&id={$v['id']}&token={$pe_token}" onclick="return confirm('Are you sure?')"><p style="text-align:right;color:#bdbdbd"  class="lang" key="gmydel"></p></a>
+						<!--{endif;}-->
+
+					</div>
+				</div>
+					
+			</div>
+			<!--{endforeach;}-->
+
+			<div class="fenye mat10">{$db->page->html}<div class="clear"></div></div>
+		</div>
+
+		
+	</div><!--mui-content end-->
+	
+    <script>
+        var maxstrlen = 50;
+        function Q(s) {
+            return document.getElementById(s);
+        }
+    function checkWords(c) {
+		
+    c.value=c.value.toString().match(/^\d+(?:\.\d{0,1})?/) //只能输入2位小数
+    if (c.value.indexOf('.') < 0 && c.value != '') {  //输入替换，如输入05，直接替换为5，防止出现01，02这种情况
+        c.value = parseFloat(c.value);
+    }
+	
+            len = maxstrlen;
+            var str = c.value;
+            var wck = Q("wordCheck");
+			var ok = str*{$rsadmin['btcprice']*0.00000001};
+			ok = ok.toFixed(8);
+            wck.innerHTML = ok;
+
+        }
+    </script>
+	
+<script>
+function checkNum(obj,intNum=0,decNum=0) {
+    var value=obj.value;
+    var changeValue,t1,t2;
+    switch (decNum){
+            case 0:
+                value=value.replace(/[^\d]/g,'');
+                value=value.replace(/^0\d+/g,'0');
+                if(intNum!=0){
+                    value=value.substr(0,intNum);
+                }
+                break;
+            default:
+                value=value.replace(/[^\d.]/g,'');
+                value=value.replace(/^[^\d]/g,'');
+                value=value.replace(/\.{2}/g,'.');
+                value=value.replace(/^0\d+/g,'0');
+                changeValue=value.split('.');
+                if(changeValue.length>1){
+                    if(intNum==0){
+                        t1=changeValue[0];
+                    }else{
+                        t1=changeValue[0].substr(0,intNum);
+                    }
+                    t2=changeValue[1].substr(0,decNum);
+                    value=t1+'.'+t2;
+                }else{
+                    if(intNum!=0){
+                        value=value.substr(0,intNum);
+                    }
+                }
+                break;
+        }
+    if(obj.value!=value){
+        obj.value=value;
+    }
+    return value;
+}
+</script>
+	
+<script type="text/javascript">
+$(function(){
+
+
+	$(":button").click(function(){
+	
+		var amount = pe_num($(":input[name='amount']").val(), 'float', 8);
+		var price = pe_num($(":input[name='price']").val(), 'float', 4);
+		console.log(amount);
+
+		if (amount <= 0) {
+			app_tip('Please input amount','error');
+			return false;
+		}
+		if (price <= 0) {
+			app_tip('Please input price','error');
+			return false;
+		}
+
+		app_submit("user.php?mod=market&act=agsc", function(json){
+			if (json.result) {
+				app_open("user.php?mod=market&act=agsc", 1000);
+			}
+		})
+	})
+})
+</script>	
+
+<script src="/main/js/langmarket.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+

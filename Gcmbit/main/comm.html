@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<title>More about GLOBSOJOURN</title>
+		<script type="text/javascript" src="maintemp/js/flexible/flexible.debug.js"></script>
+		<link href="maintemp/css/mui.min.css" rel="stylesheet" />
+		<link href="maintemp/css/app.css" rel="stylesheet" />
+		<link rel="stylesheet" href="maintemp/css/style.css">
+	</head>
+	<body class="">
+
+		<header class="mui-bar mui-bar-nav i-header-bar mui-bar-transparent">
+			<a href="user.php?mod=assets&act=in" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">More about GLOBSOJOURN</h1>
+		</header>
+		<div class="mui-content">
+			<div class="i-main">
+				<div class="i-banner-wrap w100">
+					<div class="mui-slider i-banner overflow mui-radius-6">
+						<div class="mui-slider-group mui-slider-loop">
+
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#"><img src="maintemp/images/i-banner.png" /></a>
+							</div>
+
+							<div class="mui-slider-item">
+								<a href="#"><img src="maintemp/images/i-banner.png" /></a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="#"><img src="maintemp/images/i-banner.png" /></a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="#"><img src="maintemp/images/i-banner.png" /></a>
+							</div>
+
+	
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#"><img src="maintemp/images/i-banner.png" /></a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+
+						</div>
+					</div>
+				</div> <!-- i-banner-wrap end-->
+				<div class="fl-m1 mt-20">
+					<ul class="fl-m1-quick">
+						<li>
+							<a>
+								<img src="maintemp//images/fl-li-bg1.png" alt="" />
+								<div class="fl-m1-quickCon">
+									<h3>Property</h3>
+									<p></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a>
+								<img src="maintemp//images/fl-li-bg2.png" alt="" />
+								<div class="fl-m1-quickCon">
+									<h3>Hotel</h3>
+									<p></p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a>
+								<img src="maintemp//images/fl-li-bg3.png" alt="" />
+								<div class="fl-m1-quickCon">
+									<h3>Wellness</h3>
+									<p></p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div><!-- fl-m1 end -->
+			</div><!--i-main end-->
+		</div><!--mui-content end-->
+
+		<script src="/main/maintemp/js/jquery-1.11.1.min.js"></script>
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+				interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+			$(function() {
+				var bannerH = $(".mui-slider .mui-slider-group .mui-slider-item").width() * 0.50746;
+				$(".mui-slider .mui-slider-group .mui-slider-item img").css("height", bannerH);
+				$(window).resize(function() {
+					var bannerH = $(".mui-slider .mui-slider-group .mui-slider-item").width() * 0.50746;
+					$(".mui-slider .mui-slider-group .mui-slider-item img").css("height", bannerH);
+				});
+			})
+
+			//		mui('body').on('tap','a',function(){
+			//			window.top.location.href=this.href;
+			//		});
+		</script>
+
+	</body>
+</html>

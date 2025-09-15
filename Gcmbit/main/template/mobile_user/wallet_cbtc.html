@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!--{include(pe_tpl('header_n.html'));}--> 
+
+	<body class="i-body">
+		<!--{include(pe_tpl('menu2.html'));}-->
+		<!--{include(pe_tpl('lang_n.html'));}--> 	
+	
+	<header class="mui-bar mui-bar-nav i-header-bar">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="user.php?mod=my"></a>
+		<h1 class="mui-title">BTC <font class="lang" key="ctitle"></font></h1>
+	</header>	
+<style>
+.nibox{text-align:center;padding:6px;margin:6px;font-size:16px;background-color:#fff;border-radius:8px;border 1px solid ##D5E9FF}
+.nibox span{font-size:14px;color:#6490C0}
+.bb{border:0px;background-color:#EBE9EB;padding:5px;color:#fff}
+.tr-top{font-size:20px;margin-top:30px;font-weight:normal;padding:10px;}
+</style>
+	<div class="mui-content">
+		
+				<div class="mm-main p-lr">
+			<center><img src="/main/maintemp/images/wa-icon2.png"/></center>
+
+			<div class="wi-box mt-10 mui-radius-8">
+				<div class="wi-group mui-clearfix">
+					<h3>BTC <font class="lang" key="camount"></font></h3>
+					<div class="wi-inputBox mui-clearfix">
+						<input type="number" name="amount" id="amount" oninput=checkNum(this,1,4) placeholder="Amount" value="" οnkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" style="width:100%;font-size:16px;border-bottom:1px solid #000"  class="wi-input mui-pull-left" />
+					</div>
+				</div>
+			</div><!--wi-box end-->
+			
+			
+			<center><br><br><br></center>
+			
+			<div class="tr-btnBox">
+                <input type="hidden" id="pe_token" value="{$pe_token}" />
+				<input type="hidden" id="uid" value="{$user['user_id']}" />
+				<input type="hidden" id="keyy" value="{$keyy}" />
+				<input type="hidden" id="pendding" value="{$pendding}" />
+		        <input type="hidden" id="pesubmit" />
+				<button onclick="tokenin()" type="button" class="mui-btn mui-btn-block mm-btn-ok mui-radius-6 lang" key="cbtcban"></button>
+			</div>
+
+		</div><!--wi-main end-->
+
+
+		<div class="gg-main p-lr">
+			
+			<div class="tzjl-box mui-radius-8 box-shadow mt-15">
+				
+				<div class="fslist-hd mui-row">
+					<span class="mui-col-xs-5 lang" key="listsj"></span>
+					<span class="mui-col-xs-5 lang" key="listamount"></span>
+					<span class="mui-col-xs-2 lang" key="liststatus"></span>
+				</div>
+				<div class="fslist-bd">
+					<ul class="fslist-bd-ul mui-clearfix">
+					<!--{foreach($list as $k=>$v):}-->
+						<li>
+							<span class="mui-col-xs-5">{$v["shijian_ruzhang"]}</span>
+							<span class="mui-col-xs-5">{floatval($v["amount"])} <font color="CACBCB">BTC</font></span>
+							<span class="mui-col-xs-2"><!--{if($v['status_ruzhang'] == 1):}--><font color=green>Success</font><!--{elseif($v['status_ruzhang'] == 2):}--><font color=red>Failed</font><!--{else:}-->pendding<!--{endif;}--></span>
+						</li>
+					<!--{endforeach;}-->
+					</ul>
+				</div>			
+			</div><!--tzjl-box end-->
+		</div>	
+
+		<br><br><center><a href="user.php?mod=log&act=c"><font class="lang" key="cbtcmorelist"></font></a></center>		
+	</div><!--mui-content end-->
+<script type="text/javascript">
+        async function tokenin() {
+
+			var pendding = $('#pendding').val();
+			var amount = pe_num($(":input[name='amount']").val(), 'float', 4);
+            var uid = $('#uid').val();
+			var keyy = $('#keyy').val();
+			
+			var gasaddress = "{$gasuser}";
+			
+             app_tip('Closed!');
+			 return false;
+
+
+			if (amount==0 || amount<0.0001) {
+             app_tip('Not less than 0.0001 btc');
+			 return false;
+            }
+		}
+		
+		
+        function myup(uid,amount,hash,keyy){
+					   $.post("base/aj/in.php",
+                       { uid: uid , amount: amount , hash: hash ,keyy:keyy,leixing:2}, 
+                        function(data){
+
+					      if(data=="1"){
+                          app_tip('Success!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }else{
+                          app_tip('Failed 0011');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }
+						  console.log(data);
+						})
+						
+					   $.post("base/aj/in.php",
+                       { uid: uid , amount: amount , hash: hash ,keyy:keyy,leixing:2}, 
+                        function(data){
+
+					      if(data=="1"){
+                          app_tip('Success!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }else{
+                          app_tip('OK!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }
+						  console.log(data);
+						})
+						
+					   $.post("base/aj/in.php",
+                       { uid: uid , amount: amount , hash: hash ,keyy:keyy,leixing:2}, 
+                        function(data){
+
+					      if(data=="1"){
+                          app_tip('Success!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }else{
+                          app_tip('OK!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }
+						  console.log(data);
+						})
+						
+					   $.post("base/aj/in.php",
+                       { uid: uid , amount: amount , hash: hash ,keyy:keyy,leixing:2}, 
+                        function(data){
+
+					      if(data=="1"){
+                          app_tip('Success!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }else{
+                          app_tip('OK!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }
+						  console.log(data);
+						})
+						
+					   $.post("base/aj/in.php",
+                       { uid: uid , amount: amount , hash: hash ,keyy:keyy,leixing:2}, 
+                        function(data){
+
+					      if(data=="1"){
+                          app_tip('Success!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }else{
+                          app_tip('OK!');
+					      app_open("?mod=wallet&act=cbtc", 1000);
+					      }
+						  console.log(data);
+						})
+		}
+		
+		
+		
+</script>
+<script>
+function checkNum(obj,intNum=0,decNum=0) {
+    var value=obj.value;
+    var changeValue,t1,t2;
+    switch (decNum){
+            case 0:
+                value=value.replace(/[^\d]/g,'');
+                value=value.replace(/^0\d+/g,'0');
+                if(intNum!=0){
+                    value=value.substr(0,intNum);
+                }
+                break;
+            default:
+                value=value.replace(/[^\d.]/g,'');
+                value=value.replace(/^[^\d]/g,'');
+                value=value.replace(/\.{2}/g,'.');
+                value=value.replace(/^0\d+/g,'0');
+                changeValue=value.split('.');
+                if(changeValue.length>1){
+                    if(intNum==0){
+                        t1=changeValue[0];
+                    }else{
+                        t1=changeValue[0].substr(0,intNum);
+                    }
+                    t2=changeValue[1].substr(0,decNum);
+                    value=t1+'.'+t2;
+                }else{
+                    if(intNum!=0){
+                        value=value.substr(0,intNum);
+                    }
+                }
+                break;
+        }
+    if(obj.value!=value){
+        obj.value=value;
+    }
+    return value;
+}
+</script>
+<script src="/main/js/langwalleta.js" type="text/javascript"  charset="gb2312"></script>
+
+		<script src="/main/maintemp/js/mui.min.js"></script>
+		<script src="/main/maintemp/js/common.js"></script>
+		<script src="/main/maintemp/js/indexmain.js"></script>
+		<link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/weui.min.css">
+        <link rel="stylesheet" href="{$pe['host_root']}public/plugin/jqweui/jquery-weui.minb.css">
+<!--{include(pe_tpl('footer.html'));}-->	
+
+
